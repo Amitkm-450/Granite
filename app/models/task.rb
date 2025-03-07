@@ -7,20 +7,10 @@ class Task < ApplicationRecord
   validates :title, presence: true, length: { maximum: MAX_TITLE_LENGTH }, format: { with: VALID_TITLE_REGEX }
   validates :slug, uniqueness: true
   validate :slug_not_changed
-  before_validation :set_title
-  before_save :change_title
 
   before_create :set_slug
 
   private
-
-    def set_title
-      self.title = "Pay electricity bill"
-    end
-
-    def change_title
-      self.title = "Pay electricity & TV bill"
-    end
 
     def set_slug
       title_slug = title.parameterize
@@ -37,7 +27,7 @@ class Task < ApplicationRecord
       end
       slug_candidate = slug_count.positive? ? "#{title_slug}-#{slug_count + 1}" : title_slug
       self.slug = slug_candidate
-  end
+end
 
     def slug_not_changed
       if will_save_change_to_slug? && self.persisted?
