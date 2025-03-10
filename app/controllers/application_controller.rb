@@ -80,7 +80,7 @@ class ApplicationController < ActionController::Base
     if is_valid_token
       @current_user = user
     else
-      render_error(t("session.could_not_auth"), :unauthorized)
+      render_error("Could not authenticate with the provided credentials", :unauthorized)
     end
     end
 
