@@ -1,4 +1,5 @@
 const setToLocalStorage = ({ authToken, email, userId, userName }) => {
+  logger.log("Inside setter function++++++++++++++++++");
   localStorage.setItem("authToken", JSON.stringify(authToken));
   localStorage.setItem("authEmail", JSON.stringify(email));
   localStorage.setItem("authUserId", JSON.stringify(userId));
