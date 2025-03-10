@@ -31,6 +31,7 @@ const Create = ({ history }) => {
       const {
         data: { users },
       } = await usersApi.fetch();
+      logger.log("users=========", users);
       setUsers(users);
       setUserId(users[0].id);
     } catch (error) {

@@ -73,7 +73,13 @@ class ApplicationController < ActionController::Base
   def authenticate_user_using_x_auth_token
     user_email = request.headers["X-Auth-Email"].presence
     auth_token = request.headers["X-Auth-Token"].presence
+    puts "==============="
+    puts user_email
+    puts auth_token
+    puts "==============="
+    puts "user -> 1"
     user = user_email && User.find_by!(email: user_email)
+    puts "user -> ", user
     is_valid_token = user && auth_token && ActiveSupport::SecurityUtils.secure_compare(
       user.authentication_token,
       auth_token)
@@ -82,7 +88,7 @@ class ApplicationController < ActionController::Base
     else
       render_error("Could not authenticate with the provided credentials", :unauthorized)
     end
-    end
+  end
 
   def current_user
     @current_user
