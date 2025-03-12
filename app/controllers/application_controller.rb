@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user_using_x_auth_token
 
   rescue_from StandardError, with: :handle_api_exception
+  rescue_from Pundit::NotAuthorizedError, with: :handle_authorization_error
 
   def handle_api_exception(exception)
     case exception
@@ -73,16 +74,18 @@ class ApplicationController < ActionController::Base
   def authenticate_user_using_x_auth_token
     user_email = request.headers["X-Auth-Email"].presence
     auth_token = request.headers["X-Auth-Token"].presence
-    puts "==============="
+    puts "=================> user emal"
     puts user_email
+    puts "=============> token"
     puts auth_token
-    puts "==============="
-    puts "user -> 1"
+
     user = user_email && User.find_by!(email: user_email)
-    puts "user -> ", user
+    puts "=========> user found"
+    puts user
     is_valid_token = user && auth_token && ActiveSupport::SecurityUtils.secure_compare(
       user.authentication_token,
       auth_token)
+    puts "=========> user validity check"
     if is_valid_token
       @current_user = user
     else
@@ -93,4 +96,10 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user
   end
+
+  def handle_authorization_error
+    render_error(t("authorization.denied"), :forbidden)
+    end
+
+  include Pundit::Authorization
 end
