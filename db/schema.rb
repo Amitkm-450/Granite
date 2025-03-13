@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_12_122258) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_13_054136) do
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.integer "task_id", null: false
@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_12_122258) do
     t.integer "assigned_user_id"
     t.integer "task_owner_id"
     t.string "progress", default: "pending", null: false
+    t.string "status", default: "unstarred", null: false
   end
 
   create_table "users", force: :cascade do |t|
