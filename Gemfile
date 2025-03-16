@@ -74,6 +74,7 @@ end
 
 # For compiling and bundling JavaScript. Read more: https://github.com/shakacode/shakapacker
 gem "bcrypt", "~> 3.1.13"
+gem "minitest-bisect"
 gem "pry-byebug"
 gem "pundit"
 gem "react-rails", "~> 2.7.1"
