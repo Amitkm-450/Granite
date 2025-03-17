@@ -74,18 +74,13 @@ class ApplicationController < ActionController::Base
   def authenticate_user_using_x_auth_token
     user_email = request.headers["X-Auth-Email"].presence
     auth_token = request.headers["X-Auth-Token"].presence
-    puts "=================> user emal"
-    puts user_email
-    puts "=============> token"
-    puts auth_token
 
     user = user_email && User.find_by!(email: user_email)
-    puts "=========> user found"
-    puts user
+
     is_valid_token = user && auth_token && ActiveSupport::SecurityUtils.secure_compare(
       user.authentication_token,
       auth_token)
-    puts "=========> user validity check"
+
     if is_valid_token
       @current_user = user
     else

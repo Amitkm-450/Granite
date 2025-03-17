@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-    puts user
     user.save!
     render_notice(t("successfully_created", entity: "User"))
   end
