@@ -10,6 +10,7 @@ import { CreateTask, EditTask, ShowTask } from "components/Tasks";
 import { getFromLocalStorage } from "utils/storage";
 
 import { Login, Signup } from "./components/Authentication";
+import Preferences from "./components/Preferences";
 
 const App = () => {
   const authToken = getFromLocalStorage("authToken");
@@ -24,6 +25,7 @@ const App = () => {
         <Route exact component={CreateTask} path="/tasks/create" />
         <Route exact component={Signup} path="/signup" />
         <Route exact component={Login} path="/login" />
+        <Route exact component={Preferences} path="/my/preferences" />
         <PrivateRoute
           component={Dashboard}
           condition={isLoggedIn}
