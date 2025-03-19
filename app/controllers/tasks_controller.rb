@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
-  after_action :verify_authorized, except: %i[index create]
+  after_action :verify_authorized, except: :index
   after_action :verify_policy_scoped, only: :index
   before_action :load_task!, only: %i[show update destroy]
   before_action :ensure_authorized_update_to_restricted_attrs, only: :update
@@ -14,6 +14,7 @@ class TasksController < ApplicationController
 
   def create
     task = current_user.created_tasks.new(task_params)
+    authorize task
     task.save!
     render_notice(t("successfully_created", entity: "Task"))
   end
@@ -39,7 +40,7 @@ class TasksController < ApplicationController
 
     def task_params
       params.require(:task).permit(:title, :assigned_user_id, :progress, :status)
-end
+    end
 
     def ensure_authorized_update_to_restricted_attrs
       is_editing_restricted_params = Task::RESTRICTED_ATTRIBUTES.any? { |a| task_params.key?(a) }
