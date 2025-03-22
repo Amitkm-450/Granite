@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import { PrivateRoute } from "components/commons";
 import Dashboard from "components/Dashboard";
 import { CreateTask, EditTask, ShowTask } from "components/Tasks";
+import DownloadReport from "components/Tasks/DownloadReport";
 import { getFromLocalStorage } from "utils/storage";
 
 import { Login, Signup } from "./components/Authentication";
@@ -22,6 +23,7 @@ const App = () => {
       <Switch>
         <Route exact component={ShowTask} path="/tasks/:slug/show" />
         <Route exact component={EditTask} path="/tasks/:slug/edit" />
+        <Route exact component={DownloadReport} path="/tasks/report" />;
         <Route exact component={CreateTask} path="/tasks/create" />
         <Route exact component={Signup} path="/signup" />
         <Route exact component={Login} path="/login" />
