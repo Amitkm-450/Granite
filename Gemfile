@@ -94,3 +94,4 @@ gem "wkhtmltopdf-binary"
 # To load the environment variables
 gem "dotenv-rails"
 gem "pg", group: [:production]
+gem "redis", "~> 4.0"
