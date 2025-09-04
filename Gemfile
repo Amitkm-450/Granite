@@ -63,3 +63,5 @@ gem "prettyprint", "~> 0.2.0"
 gem "ostruct", "~> 0.6.3"
 
 gem "responders"
+
+gem 'react-rails', "~> 2.7.1"
