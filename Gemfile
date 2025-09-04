@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 
 ruby "3.3.5"
@@ -41,6 +43,9 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+
+  gem "rubocop", require: false
+  gem "rubocop-rails", require: false
 end
 
 group :development do
@@ -49,7 +54,7 @@ group :development do
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
-
+  gem "erb_lint", require: false, git: "https://github.com/Shopify/erb-lint.git", branch: "main"
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
@@ -64,4 +69,4 @@ gem "ostruct", "~> 0.6.3"
 
 gem "responders"
 
-gem 'react-rails', "~> 2.7.1"
+gem "react-rails", "~> 2.7.1"
