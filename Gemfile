@@ -69,4 +69,5 @@ gem "ostruct", "~> 0.6.3"
 
 gem "responders"
 
+gem "data_migrate"
 gem "react-rails", "~> 2.7.1"
