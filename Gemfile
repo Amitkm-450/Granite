@@ -71,3 +71,5 @@ gem "responders"
 
 gem "data_migrate"
 gem "react-rails", "~> 2.7.1"
+
+gem "bcrypt", "~> 3.1.13"
