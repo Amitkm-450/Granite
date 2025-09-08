@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :tasks, except: %i[new edit], param: :slug
-  resources :users, only: :index
+  constraints(lambda { |req| req.format == :json }) do
+    resources :tasks, except: %i[new edit], param: :slug
+    resources :users, only: :index
+  end
 
   get "up" => "rails/health#show", as: :rails_health_check
 
