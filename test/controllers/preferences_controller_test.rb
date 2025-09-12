@@ -35,7 +35,7 @@ end
 
     put preference_path, params: preference_params, headers: @headers
     assert_response :unprocessable_entity
-    assert_equal "Notification delivery hour #{t("preference.notification_delivery_hour.range")}",
+    assert_equal "Notification delivery hour #{I18.t("preference.notification_delivery_hour.range")}",
       response.parsed_body["error"]
   end
 
