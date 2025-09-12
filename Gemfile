@@ -79,3 +79,4 @@ gem "pundit"
 gem "simplecov", require: false, group: :test
 
 gem "minitest-bisect"
+gem "sidekiq", "~> 7.0"
