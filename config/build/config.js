@@ -17,6 +17,7 @@ const alias = {
   utils: absolutePath("src/utils"),
   common: absolutePath("src/common"),
   components: absolutePath("src/components"),
+  channels: absolutePath("src/channels"),
 };
 
 export { alias };
