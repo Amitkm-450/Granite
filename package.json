@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "node esbuild.config.js && yarn build:css",
-    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css --minify",
+    "build:css": "tailwindcss -i ./app/javascript/stylesheets/application.scss -o ./app/assets/builds/application.scss --minify",
     "dev": "vite",
     "prepare": "husky install"
   },
